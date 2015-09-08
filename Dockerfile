@@ -1,7 +1,7 @@
 FROM java:8
 FROM maven
-COPY . /usr/src/hestia
-WORKDIR /usr/src/hestia
+COPY . /usr/src/tomorinao
+WORKDIR /usr/src/tomorinao
 ENV JAVA_OPTS -XX:+UseCompressedOops
 
 RUN mvn package

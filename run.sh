@@ -1,1 +1,1 @@
-docker run `cat secretenv | sed -e 's/^/-e /'` env -t hestia 
+docker run `cat secretenv | sed -e 's/^/-e /'` env -t tomorinao 

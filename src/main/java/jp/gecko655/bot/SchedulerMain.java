@@ -3,8 +3,8 @@ package jp.gecko655.bot;
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.SimpleScheduleBuilder.repeatSecondlyForever;
 import static org.quartz.TriggerBuilder.newTrigger;
-import jp.gecko655.bot.hestia.HestiaBot;
-import jp.gecko655.bot.hestia.HestiaReply;
+import jp.gecko655.bot.tomorinao.TomoriNaoBot;
+import jp.gecko655.bot.tomorinao.TomoriNaoReply;
 
 import org.quartz.Job;
 import org.quartz.JobDetail;
@@ -21,8 +21,8 @@ public class SchedulerMain {
         scheduler = StdSchedulerFactory.getDefaultScheduler();
 
         scheduler.start();
-        setSchedule(HestiaReply.class, repeatSecondlyForever(60*2));
-        setSchedule(HestiaBot.class, repeatSecondlyForever(60*60*4));
+        setSchedule(TomoriNaoReply.class, repeatSecondlyForever(60*2));
+        setSchedule(TomoriNaoBot.class, repeatSecondlyForever(60*60*4));
 
     }
     private static void setSchedule(Class<? extends Job> classForExecute, ScheduleBuilder<? extends Trigger> schedule) throws SchedulerException {

@@ -1,4 +1,4 @@
-package jp.gecko655.bot.hestia;
+package jp.gecko655.bot.tomorinao;
 
 
 import java.text.DateFormat;
@@ -16,12 +16,12 @@ import twitter4j.Status;
 import twitter4j.StatusUpdate;
 import twitter4j.TwitterException;
 
-public class HestiaReply extends AbstractCron {
+public class TomoriNaoReply extends AbstractCron {
     
     static final DateFormat format = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
     private static final Pattern whoPattern = Pattern.compile("( 誰$| だれ$|誰[^だで]|だれ[^だで]|誰だ[^と]?|だれだ[^と]?| 違う| ちがう)");
 
-    public HestiaReply() {
+    public TomoriNaoReply() {
         format.setTimeZone(TimeZone.getDefault());
     }
 
@@ -55,19 +55,27 @@ public class HestiaReply extends AbstractCron {
                     // put latest image URL to black-list
                     who(reply);    
                 }else{
-                    //auto reply (when hestia-sama follows the replier)
+                    //auto reply (when bot follows the replier)
                     StatusUpdate update= new StatusUpdate("@"+reply.getUser().getScreenName()+" ");
                     update.setInReplyToStatusId(reply.getId());
-                    //if(((int) (Math.random()*10))==1){//10%
-                    updateStatusWithMedia(update, "ヘスティア　ダンジョンに出会いを求めるのは間違っているだろうか",100);
-                    //}else{
-                        //updateStatusWithMedia(update, "藤宮香織 かわいい 一週間フレンズ。",100);
-                    //}
+                    String query = query();
+                    updateStatusWithMedia(update, query, 100);
                 }
             }
         } catch (TwitterException e) {
             logger.log(Level.WARNING,e.toString());
             e.printStackTrace();
+        }
+    }
+    
+    private String query(){
+        int rand = (int) Math.random()*10;
+        if(rand<6){//60%
+            return "友利奈緒 かわいい";
+        }else if(rand<8){//20%
+            return "西森柚咲 かわいい";
+        }else{//20%
+            return "乙坂歩未 かわいい";
         }
     }
 
