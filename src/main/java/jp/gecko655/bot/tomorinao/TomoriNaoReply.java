@@ -83,7 +83,10 @@ public class TomoriNaoReply extends AbstractCron {
 
     private boolean isValid(Status reply, Status lastStatus) {
         if(lastStatus==null) return false;
-        if(Duration.between(reply.getCreatedAt().toInstant(), LocalDateTime.now()).toHours()>12) return false;
+        if(Duration.between(reply.getCreatedAt().toInstant(), LocalDateTime.now()).toHours()>12) {
+            logger.log(Level.INFO, reply.getUser().getName()+"'s tweet \""+reply.getText()+"\" is Too old, skip.");
+            return false;
+        }
         return reply.getCreatedAt().after(lastStatus.getCreatedAt());
     }
 
