@@ -4,6 +4,7 @@ package jp.gecko655.bot.tomorinao;
 import java.text.DateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.logging.Level;
@@ -67,6 +68,9 @@ public class TomoriNaoReply extends AbstractCron {
         } catch (TwitterException e) {
             logger.log(Level.WARNING,e.toString());
             e.printStackTrace();
+        } catch (Exception e) {
+            logger.log(Level.WARNING,e.toString());
+            e.printStackTrace();
         }
     }
     
@@ -83,8 +87,8 @@ public class TomoriNaoReply extends AbstractCron {
 
     private boolean isValid(Status reply, Status lastStatus) {
         if(lastStatus==null) return false;
-        if(Duration.between(reply.getCreatedAt().toInstant(), LocalDateTime.now()).toHours()>12) {
-            logger.log(Level.INFO, reply.getUser().getName()+"'s tweet \""+reply.getText()+"\" is Too old, skip.");
+        if(Duration.between(reply.getCreatedAt().toInstant(), LocalDateTime.now().toInstant(ZoneOffset.UTC)).toHours()>12) {
+            logger.log(Level.FINE, reply.getUser().getName()+"'s tweet \""+reply.getText()+"\" is Too old, skip.");
             return false;
         }
         return reply.getCreatedAt().after(lastStatus.getCreatedAt());
