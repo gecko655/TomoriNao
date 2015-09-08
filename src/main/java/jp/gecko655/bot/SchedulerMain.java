@@ -22,7 +22,7 @@ public class SchedulerMain {
 
         scheduler.start();
         setSchedule(TomoriNaoReply.class, repeatSecondlyForever(60*2));
-        setSchedule(TomoriNaoBot.class, repeatSecondlyForever(60*60*4));
+        setSchedule(TomoriNaoBot.class, repeatSecondlyForever(60*60*2));
 
     }
     private static void setSchedule(Class<? extends Job> classForExecute, ScheduleBuilder<? extends Trigger> schedule) throws SchedulerException {
