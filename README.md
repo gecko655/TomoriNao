@@ -2,7 +2,7 @@ TomoriNao
 ===========
 
 HerokuまたはDockerコンテナ上で動作するTwitter Botの制御プログラムです。
-<https://twitter.com/>_TOBEDETERMINED_ を動かしています。
+<https://twitter.com/Tomori_Nao_Pic>を動かしています。
 <https://github.com/gecko655/fujimiya_monday> のCharlotte移植版です。
 
 ### 主な機能
