@@ -75,7 +75,7 @@ public class TomoriNaoReply extends AbstractCron {
     }
     
     private String query(){
-        int rand = (int) Math.random()*10;
+        int rand = (int) (Math.random()*10);
         if(rand<6){//60%
             return "友利奈緒 かわいい";
         }else if(rand<8){//20%
