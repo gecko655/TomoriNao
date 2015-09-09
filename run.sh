@@ -1,1 +1,1 @@
-docker run -d --name tomorinao --env-file secretenv tomorinao 
+docker run -d --name tomorinao --env-file secretenv gecko655/tomorinao 

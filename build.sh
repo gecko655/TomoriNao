@@ -1,1 +1,1 @@
-docker build -t tomorinao .
+docker build -t gecko655/tomorinao .
