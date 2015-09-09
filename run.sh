@@ -1,1 +1,1 @@
-docker run `cat secretenv | sed -e 's/^/-e /'` env -t tomorinao 
+docker run -d --name tomorinao --env-file secretenv tomorinao 
