@@ -54,7 +54,9 @@ public class TomoriNaoReply extends AbstractCron {
                     twitter.createFriendship(reply.getUser().getId());
                 }
 
-                if(whoPattern.matcher(reply.getText()).find()){
+                if(whoPattern.matcher(reply.getText()).find()//The reply has 誰 format
+                    &&reply.getInReplyToStatusId()>0//The reply replies to a specific tweet.
+                    &&twitter.showStatus(reply.getInReplyToStatusId()).getMediaEntities().length>0){
                     // put latest image URL to black-list
                     who(reply);    
                 }else{
